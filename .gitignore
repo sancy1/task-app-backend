@@ -1,0 +1,113 @@
+
+# --- Environment Variables and Configuration Files ---
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+*.env
+config/*.local.*
+config/*.secret.*
+**/credentials.json
+**/client_secrets.json
+**/client_secret.json
+*creds*
+*.dat
+*password*
+*.httr-oauth*
+
+# --- Logs ---
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# --- Runtime Data ---
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# --- Dependency Directories ---
+node_modules/
+jspm_packages/
+# Optional: Uncomment if needed
+# package-lock.json
+# yarn.lock
+
+# --- Build Outputs ---
+dist/
+build/
+*.tsbuildinfo
+out/
+release/
+
+# --- Coverage Reports ---
+coverage/
+.nyc_output/
+*.lcov
+
+# --- IDE and Editor Files ---
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+.history/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# --- OS-Specific Files ---
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# --- Docker and Containerization ---
+docker-compose.override.yml
+.dockerignore
+
+# --- Testing and Debugging ---
+jest-cache/
+jest-debug.log*
+.vscode-jest/
+
+# --- TypeScript and Node.js ---
+# Optional: Ignore JS output (keep src JS if needed)
+*.js
+*.js.map
+!src/**/*.js
+tsconfig.tsbuildinfo
+
+# --- Miscellaneous ---
+.cache/
+.parcel-cache/
+.tern-port
+.export
+.sass-cache/
+*.tgz
+.yarn-integrity
+.npm
+.eslintcache
+.stylelintcache
+*.tar.gz
+*.rar
+*.zip

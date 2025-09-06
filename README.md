@@ -44,3 +44,6 @@ The programming language used is TypeScript, which provides static typing, bette
 - Replace **192.168.0.197** with your IP address. 
 - Run **ipconfig** on your Command Prompt terminal CMD to get your IP address 
 - Use same network (Wi-Fi / hotspot) on your PC and android device
+
+# **Frontend Project Url **
+https://github.com/sancy1/task-app-frontend.git

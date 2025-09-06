@@ -1,6 +1,18 @@
 
 // src/shared/middlewares/cors.middleware.ts
 
+/* 
+  The (CORS) controls, which clients are allowed to communicate with my backend API.
+  I define a list of allowed origins (localhost, emulator, LAN IP, AND Expo,...) 
+  so only trusted clients can connect.
+
+  I also created an optional custom handler called corsHandler. 
+  It manually sets CORS headers, which gives me more control if 
+  I need it. For example, it checks the request’s origin, sets 
+  the appropriate headers, and even short-circuits OPTIONS 
+  preflight requests with a 200 response.
+*/
+
 import { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import { config } from '../../config';
@@ -20,6 +32,7 @@ const allowedOrigins = [
   // 'https://www.yourapp.com',
 ];
 
+
 // CORS options
 const corsOptions: cors.CorsOptions = {
   origin: (origin, callback) => {
@@ -32,6 +45,7 @@ const corsOptions: cors.CorsOptions = {
       callback(new Error('Not allowed by CORS'));
     }
   },
+  
   credentials: true, // Allow cookies and authentication headers
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: [

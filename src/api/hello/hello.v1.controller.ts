@@ -8,6 +8,11 @@ import { Request, Response } from 'express';
 
 /**
  * Handles GET requests to return a simple "Hello World" message
+ * 
+ * This file defines the getHelloWorld controller. It receives 
+ * a request and sends back a JSON response with a message, a 
+ * success flag, and a timestamp. I also added error handling 
+ * so the API always responds gracefully.
  */
 export const getHelloWorld = (req: Request, res: Response): void => {
   try {

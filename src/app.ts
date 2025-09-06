@@ -3,7 +3,7 @@
 // src/app.ts:
 
 import express from 'express';
-import cors from 'cors';
+// import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
@@ -13,6 +13,11 @@ import { config } from './config';
 import { logger } from './shared/lib/logger';
 import { errorMiddleware } from './shared/middlewares/error.middleware';
 import { corsMiddleware } from './shared/middlewares/cors.middleware';
+
+// This file sets up middleware for security, 
+// logging, and request handling. It mounts all the 
+// API routes under /api and also has a /health 
+// endpoint to quickly check if the server is running
 
 // Import routes
 import apiRoutes from './api';
@@ -39,6 +44,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // Logging
+// Morgan middleware. A request logger that logs information about incoming HTTP requests,
 app.use(morgan(config.isDev ? 'dev' : 'combined', {
   stream: { write: (message) => logger.info(message.trim()) }
 }));
@@ -55,7 +61,7 @@ app.get('/health', (req, res) => {
   });
 });
 
-// Error handling middleware (should be last)
+// Error handling middleware
 app.use(errorMiddleware);
 
 // 404 handler

@@ -9,9 +9,11 @@ import helloRoutes from './hello/hello.v1.routes';
 
 const router = Router();
 
-router.use('/auth', authRoutes);
-router.use('/tasks', tasksRoutes);
-router.use('/devices', devicesRoutes);
+// This file brings together all our route files under their respective paths.
+
+// router.use('/auth', authRoutes);
+// router.use('/tasks', tasksRoutes);
+// router.use('/devices', devicesRoutes);
 router.use('/hello', helloRoutes);
 
 export default router;

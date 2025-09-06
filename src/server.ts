@@ -8,15 +8,23 @@ import { dbPool } from './infrastructure/db/client';
 
 const PORT = config.PORT;
 
-// Simple database connection check
+/* 
+  This file is the entry point. Before starting the server, it checks the 
+  PostgreSQL database connection using dbPool. If the DB isn’t connected, 
+  the server won’t start. Once connected, the server runs on the port 
+  defined in the .env file, and it also listens for shutdown signals 
+  like SIGINT to close connections gracefully
+*/
+
+// Database connection check
 const checkDatabaseConnection = async () => {
   try {
     const client = await dbPool.connect();
-    logger.info('✅ Database connected successfully!');
+    logger.info('Database connected successfully!');
     client.release();
     return true;
   } catch (error) {
-    logger.error('❌ Database connection failed');
+    logger.error('Database connection failed');
     logger.error(error);
     return false;
   }
@@ -34,8 +42,8 @@ const startServer = async () => {
 
   // Start the server
   const server = app.listen(PORT, () => {
-    logger.info(`🚀 Server running in ${config.NODE_ENV} mode on port ${PORT}`);
-    logger.info(`📍 Health check available at: http://localhost:${PORT}/health`);
+    logger.info(`Server running in ${config.NODE_ENV} mode on port ${PORT}`);
+    logger.info(`Health check available at: http://localhost:${PORT}/health`);
   });
 
   // Graceful shutdown

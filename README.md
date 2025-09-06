@@ -33,3 +33,15 @@ The programming language used is TypeScript, which provides static typing, bette
 # **Notes**
 - The API is currently running locally and has been successfully consumed by an Android  emulator and a physical device.
 - This setup serves as the **foundation for future features**, such as user authentication, task CRUD operations, and mobile push notifications.
+
+# **Test Project**
+Backend: 
+**npm run dev**
+**Web:** http://localhost:3000/api/hello
+
+Android Mobile Device:
+**Android Emulator and Device:** http://192.168.0.197:3000/api/hello
+- Replace **192.168.0.197** with your IP address. 
+- Run **ipconfig** on your Command Prompt terminal CMD to get you IP address 
+- Use same network (Wi-Fi / hotspot) on your PC and android device
+

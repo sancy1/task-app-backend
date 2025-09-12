@@ -5,22 +5,8 @@ import { Request, Response } from 'express';
 import { TaskService } from '../../domains/tasks/task.service';
 import { ValidationError, NotFoundError, AuthorizationError } from '../../shared/lib/errors';
 
-
 // Initialize task service
 const taskService = new TaskService();
-
-// Centralized error handler
-function handleError(res: Response, error: any) {
-  if (
-    error instanceof ValidationError ||
-    error instanceof NotFoundError ||
-    error instanceof AuthorizationError
-  ) {
-    res.status(error.statusCode).json({ success: false, error: error.message });
-  } else {
-    res.status(500).json({ success: false, error: 'Internal server error' });
-  }
-}
 
 // Create a new task
 export const createTask = async (req: Request, res: Response): Promise<void> => {
@@ -29,6 +15,7 @@ export const createTask = async (req: Request, res: Response): Promise<void> => 
     if (!userId) throw new AuthorizationError('User not authenticated');
 
     const { title, description, status, priority, due_date } = req.body;
+
     if (!title) throw new ValidationError('Title is required');
 
     const task = await taskService.createTask({
@@ -53,6 +40,7 @@ export const getTasks = async (req: Request, res: Response): Promise<void> => {
     if (!userId) throw new AuthorizationError('User not authenticated');
 
     const { status, priority, search } = req.query;
+
     const tasks = await taskService.getTasksByUser(userId, {
       status: status as any,
       priority: priority as any,
@@ -88,7 +76,6 @@ export const updateTask = async (req: Request, res: Response): Promise<void> => 
 
     const { id } = req.params;
     const { title, description, status, priority, due_date } = req.body;
-    console.log(">>> UpdateTask request", { id, body: req.body });
 
     const task = await taskService.updateTask(
       id,
@@ -176,3 +163,12 @@ export const archiveTask = async (req: Request, res: Response): Promise<void> =>
     handleError(res, error);
   }
 };
+
+// Centralized error handler
+function handleError(res: Response, error: any) {
+  if (error instanceof ValidationError || error instanceof NotFoundError || error instanceof AuthorizationError) {
+    res.status(error.statusCode).json({ success: false, error: error.message });
+  } else {
+    res.status(500).json({ success: false, error: 'Internal server error' });
+  }
+}

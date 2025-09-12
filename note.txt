@@ -1,0 +1,115 @@
+Check if tables exist:
+GET:
+http://localhost:3000/api/debug/db-check
+
+
+Initialize tables (if they don't exist):
+POST:
+http://localhost:3000/api/debug/db-init
+
+
+REGISTER
+POST: 
+http://localhost:3000/api/auth/register
+{
+  "email": "sanchez@gmail.com",
+  "password": "password123",
+  "first_name": "Sanchez",
+  "last_name": "West"
+}
+
+
+LOGIN
+POST:
+http://localhost:3000/api/auth/login
+{
+    "email": "sanchez@gmail.com",
+    "password": "password123"
+  }
+
+
+PROFILE
+GET:
+http://localhost:3000/api/auth/profile
+Authorization
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0ZWY4YzFjYi0xYzc0LTRiZTAtOTQxNC1jZjVkMWFhODlkNGUiLCJ0eXBlIjoiYWNjZXNzIiwiaWF0IjoxNzU3MjQ0OTE2LCJleHAiOjE3NTgxNDQ5MTZ9.8IGAIVFUuUGu1dUWXTzdEKEqh4vK85xe8A3aBZtJ79w
+
+
+logout
+POST:
+http://localhost:3000/api/auth/logout
+Authorization
+Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0ZWY4YzFjYi0xYzc0LTRiZTAtOTQxNC1jZjVkMWFhODlkNGUiLCJ0eXBlIjoiYWNjZXNzIiwiaWF0IjoxNzU3MjQ0OTE2LCJleHAiOjE3NTgxNDQ5MTZ9.8IGAIVFUuUGu1dUWXTzdEKEqh4vK85xe8A3aBZtJ79w
+
+Create a Task (POST)
+http
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidHlwZSI6ImFjY2VzcyIsImlhdCI6MTUxNjIzOTAyMn0
+
+{
+  "title": "Complete project documentation",
+  "description": "Write comprehensive documentation for the task management system",
+  "priority": "high",
+  "due_date": "2023-12-31T23:59:59Z"
+}
+Optional fields: description, status, priority, due_date
+Default values: status: "pending", priority: "medium"
+
+2. Get All Tasks (GET)
+http
+GET http://localhost:3000/api/tasks
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidHlwZSI6ImFjY2VzcyIsImlhdCI6MTUxNjIzOTAyMn0
+With filters:
+
+http
+GET http://localhost:3000/api/tasks?status=completed&priority=high&search=documentation
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidHlwZSI6ImFjY2VzcyIsImlhdCI6MTUxNjIzOTAyMn0
+
+3. Get a Specific Task (GET)
+http
+GET http://localhost:3000/api/tasks/123e4567-e89b-12d3-a456-426614174000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidHlwZSI6ImFjY2VzcyIsImlhdCI6MTUxNjIzOTAyMn0
+4. Update a Task (PUT)
+http
+PUT http://localhost:3000/api/tasks/123e4567-e89b-12d3-a456-426614174000
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidHlwZSI6ImFjY2VzcyIsImlhdCI6MTUxNjIzOTAyMn0
+
+{
+  "title": "Updated task title",
+  "description": "Updated description with more details",
+  "status": "in_progress",
+  "priority": "urgent",
+  "due_date": "2024-01-15T23:59:59Z"
+}
+5. Delete a Task (DELETE)
+http
+
+
+DELETE http://localhost:3000/api/tasks/123e4567-e89b-12d3-a456-426614174000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidHlwZSI6ImFjY2VzcyIsImlhdCI6MTUxNjIzOTAyMn0
+Task Status Management Endpoints
+6. Mark Task as Completed (PATCH)
+http
+
+
+PATCH http://localhost:3000/api/tasks/123e4567-e89b-12d3-a456-426614174000/complete
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidHlwZSI6ImFjY2VscyIsImlhdCI6MTUxNjIzOTAyMn0
+7. Mark Task as Pending (PATCH)
+http
+
+
+PATCH http://localhost:3000/api/tasks/123e4567-e89b-12d3-a456-426614174000/pending
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidHlwZSI6ImFjY2VzcyIsImlhdCI6MTUxNjIzOTAyMn0
+8. Mark Task as In Progress (PATCH)
+http
+
+
+PATCH http://localhost:3000/api/tasks/123e4567-e89b-12d3-a456-426614174000/in-progress
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidHlwZSI6ImFjY2VzcyIsImlhdCI6MTUxNjIzOTAyMn0
+
+Archive a Task (PATCH)
+http
+PATCH http://localhost:3000/api/tasks/123e4567-e89b-12d3-a456-426614174000/archive
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidHlwZSI6ImFjY2VzcyIsImlhdCI6MTUxNjIzOTAyMn0

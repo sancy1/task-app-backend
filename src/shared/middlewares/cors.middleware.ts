@@ -26,7 +26,9 @@ const allowedOrigins = [
   'http://10.0.2.2:3000',           // Android emulator
   'http://192.168.0.197:3000',       // Physical device on LAN — use your actual IP
   'exp://localhost:*',
-  'exp://192.168.0.197:*',           // Expo Go LAN
+  'exp://192.168.0.197:*',  
+  'exp://192.168.43.183:*',         // Expo Go LAN
+  
   // Add your production domains here:
   // 'https://yourapp.com',
   // 'https://www.yourapp.com',

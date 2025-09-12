@@ -6,14 +6,16 @@ import authRoutes from './auth/auth.v1.routes';
 import tasksRoutes from './tasks/tasks.v1.routes';
 import devicesRoutes from './devices/devices.v1.routes';
 import helloRoutes from './hello/hello.v1.routes';
+import debugRoutes from './debug/debug.v1.routes';
 
 const router = Router();
 
 // This file brings together all our route files under their respective paths.
 
-// router.use('/auth', authRoutes);
-// router.use('/tasks', tasksRoutes);
+router.use('/auth', authRoutes);
+router.use('/tasks', tasksRoutes);
 // router.use('/devices', devicesRoutes);
 router.use('/hello', helloRoutes);
+router.use('/debug', debugRoutes);
 
 export default router;
